@@ -48,6 +48,11 @@ export default {
             .then(res => {
               console.log(res);
               if (res.data.meta.status === 200) {
+                //路由跳转之后保存token数据到储存
+                localStorage.setItem(
+                  "itcast_manage_34_token",
+                  res.data.data.token
+                );
                 //跳转
                 this.$router.push({ name: "home" });
               } else {

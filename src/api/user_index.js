@@ -14,3 +14,43 @@ export const login = data => {
     data
   });
 };
+//获取用户数据
+export const getAllUserList = params => {
+  return axios({
+    url: "users",
+    params
+  });
+};
+
+//添加用户
+export const addUser = data => {
+  return axios({
+    url: "users",
+    method: "post",
+    data
+  });
+};
+
+//编辑用户
+export const ediUser = data => {
+  return axios({
+    url: `users/${data.id}`,
+    method: "put",
+    data: { email: data.email, mobile: data.mobile }
+  });
+};
+//根据id来删除用户
+export const delUserById = id => {
+  return axios({
+    url: `users/${id}`,
+    method: "delete"
+  });
+};
+
+//根据id修稿用户的状态
+export const updateUserState = (uid, type) => {
+  return axios({
+    url: `users/${uid}/state/${type}`,
+    method: "put"
+  });
+};

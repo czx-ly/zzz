@@ -8,6 +8,18 @@ import "@/styles/index.less";
 
 // 引入路由
 import router from "@/router/index.js";
+
+// //添加导航守卫
+router.beforeEach((to, from, next) => {
+  //判断用户是否登陆过，是否跳转到login页面，
+  var token = localStorage.getItem("itcast_manage_34_token");
+  if (token || to.path === "/login") {
+    next();
+  } else {
+    //否则从新到登录页面吧
+    next({ name: "login" });
+  }
+});
 // 让Vue使用element-ui
 Vue.use(ElementUI);
 
