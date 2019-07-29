@@ -113,7 +113,7 @@ import {
   grantRightById,
   addRole
 } from "@/api/role_index.js";
-import { getAllRinghtList } from "@/api/right_index.js";
+import { getAllRightList } from "@/api/right_index.js";
 export default {
   data() {
     return {
@@ -149,7 +149,7 @@ export default {
     },
     //实现角色权限的分配提交
     async grantSubmit() {
-      var arr = this.$refs.mytree.getCheckedNodes();
+      var arr = this.$refs.mytree.getCheckedodes();
 
       //遍历数组，进行数据的拼接
       var temp = [];
@@ -182,7 +182,7 @@ export default {
       // 存储当前角色id,方便后期进行权限分配提交时的获取
       this.roleId = row.id;
       // 进行所有权限数据的获取
-      let res = await getAllRinghtList("tree");
+      let res = await getAllRightList("tree");
       console.log(row);
       this.rightList = res.data.data;
       // 获取当前角色的权限id
